@@ -11,7 +11,7 @@
   "allowEnvOverride": true,
   "kind": "app",
   "dependencies": [],
-  "useGit": true,
+  "useGit": false,
   "gitUrl": "https://github.com/litongjava/tio-boot-web-benchmarker.git",
   "gitBranch": "main",
   "gitCredentialId": null,
@@ -23,6 +23,7 @@
     { "key": "APP_PORT", "value": "10061", "isSecret": false }
   ],
   "commands": [
+    { "name": "0. 同步代码（带重试）",   "file": "00-sync-code.sh",           "sortOrder": 0, "enabled": true, "failStrategy": "abort", "timeoutSec": 600 },
     { "name": "1. 环境勘察",            "file": "01-env-check.sh",           "sortOrder": 1, "enabled": true, "failStrategy": "abort", "timeoutSec": 300 },
     { "name": "2. 安装压测工具 ab/wrk", "file": "02-install-bench-tools.sh", "sortOrder": 2, "enabled": true, "failStrategy": "abort", "timeoutSec": 900 },
     { "name": "3. Maven 构建生产包",    "file": "03-build.sh",               "sortOrder": 3, "enabled": true, "failStrategy": "abort", "timeoutSec": 1800 },

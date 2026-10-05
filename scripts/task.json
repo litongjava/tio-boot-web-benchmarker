@@ -11,9 +11,13 @@
   "allowEnvOverride": true,
   "envs": [
     { "key": "TARGET_PORT", "value": "10061", "isSecret": false },
-    { "key": "APP_DIR", "value": "/srv/apps/tio-boot-web-benchmarker", "isSecret": false }
+    { "key": "BASE_URL", "value": "http://127.0.0.1:10061", "isSecret": false },
+    { "key": "APP_DIR", "value": "/srv/apps/tio-boot-web-benchmarker", "isSecret": false },
+    { "key": "SUSTAIN_SECONDS", "value": "120", "isSecret": false }
   ],
   "steps": [
-    { "name": "0. 诊断：接口与依赖", "file": "00-diagnose.sh", "sortOrder": 1, "enabled": true, "failStrategy": "continue", "timeoutSec": 600 }
+    { "name": "A. wrk 并发矩阵",     "file": "01-wrk.sh",       "sortOrder": 1, "enabled": true, "failStrategy": "continue", "timeoutSec": 1200 },
+    { "name": "B. ab 并发矩阵",      "file": "02-ab.sh",        "sortOrder": 2, "enabled": true, "failStrategy": "continue", "timeoutSec": 1200 },
+    { "name": "C. 持续压测与资源观测", "file": "03-sustained.sh", "sortOrder": 3, "enabled": true, "failStrategy": "continue", "timeoutSec": 1200 }
   ]
 }
