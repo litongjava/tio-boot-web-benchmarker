@@ -1,7 +1,8 @@
 package com.litongjava.tio.web.hello;
 
 import com.litongjava.annotation.AComponentScan;
-import com.litongjava.tio.boot.TioApplication;
+
+import nexus.io.tio.boot.TioApplication;
 
 @AComponentScan
 public class HelloApp {
