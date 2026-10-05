@@ -1,0 +1,33 @@
+{
+  "key": "tio-boot-web-benchmarker",
+  "name": "tio-boot 压测靶机（tio-boot-web-benchmarker）",
+  "description": "项目职责 = 构建与部署：从 GitHub 拉取 litongjava/tio-boot-web-benchmarker → Maven 构建 → 发布到 /srv/apps/tio-boot-web-benchmarker → systemd 守护 → 健康检查。压测本身不在这里跑，放在「任务」里（任务职责 = 执行某一个作业）。命令脚本在 scripts/commands/ 下。",
+  "workdir": "/srv/deploy/workspaces/tio-boot-web-benchmarker",
+  "shell": "auto",
+  "timeoutSec": 0,
+  "concurrency": "queue",
+  "hookEnabled": true,
+  "archived": false,
+  "allowEnvOverride": true,
+  "kind": "app",
+  "dependencies": [],
+  "useGit": true,
+  "gitUrl": "https://github.com/litongjava/tio-boot-web-benchmarker.git",
+  "gitBranch": "main",
+  "gitCredentialId": null,
+  "gitSubdir": "",
+  "gitDepth": 0,
+  "gitClean": false,
+  "gitSubmodule": false,
+  "envs": [
+    { "key": "APP_PORT", "value": "10061", "isSecret": false }
+  ],
+  "commands": [
+    { "name": "1. 环境勘察",            "file": "01-env-check.sh",           "sortOrder": 1, "enabled": true, "failStrategy": "abort", "timeoutSec": 300 },
+    { "name": "2. 安装压测工具 ab/wrk", "file": "02-install-bench-tools.sh", "sortOrder": 2, "enabled": true, "failStrategy": "abort", "timeoutSec": 900 },
+    { "name": "3. Maven 构建生产包",    "file": "03-build.sh",               "sortOrder": 3, "enabled": true, "failStrategy": "abort", "timeoutSec": 1800 },
+    { "name": "4. 发布产物与外部配置",   "file": "04-publish.sh",             "sortOrder": 4, "enabled": true, "failStrategy": "abort", "timeoutSec": 300 },
+    { "name": "5. 注册 systemd 并重启", "file": "05-systemd.sh",             "sortOrder": 5, "enabled": true, "failStrategy": "abort", "timeoutSec": 300 },
+    { "name": "6. 健康检查与预热",      "file": "06-healthcheck.sh",         "sortOrder": 6, "enabled": true, "failStrategy": "abort", "timeoutSec": 600 }
+  ]
+}

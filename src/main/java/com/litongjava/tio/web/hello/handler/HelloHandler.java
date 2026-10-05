@@ -3,7 +3,7 @@ package com.litongjava.tio.web.hello.handler;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.litongjava.model.body.RespBodyVo;
+import nexus.io.model.body.RespBodyVo;
 
 import nexus.io.tio.boot.http.TioRequestContext;
 import nexus.io.tio.http.common.HttpRequest;

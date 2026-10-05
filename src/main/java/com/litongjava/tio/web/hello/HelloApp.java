@@ -1,6 +1,6 @@
 package com.litongjava.tio.web.hello;
 
-import com.litongjava.annotation.AComponentScan;
+import nexus.io.annotation.AComponentScan;
 
 import nexus.io.tio.boot.TioApplication;
 

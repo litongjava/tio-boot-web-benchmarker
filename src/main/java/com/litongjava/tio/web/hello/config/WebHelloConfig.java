@@ -1,7 +1,7 @@
 package com.litongjava.tio.web.hello.config;
 
-import com.litongjava.annotation.AConfiguration;
-import com.litongjava.annotation.Initialization;
+import nexus.io.annotation.AConfiguration;
+import nexus.io.annotation.Initialization;
 import com.litongjava.tio.web.hello.handler.HelloHandler;
 import com.litongjava.tio.web.hello.handler.IndexHandler;
 

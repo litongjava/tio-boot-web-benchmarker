@@ -1,0 +1,19 @@
+{
+  "key": "tio-boot-bench",
+  "name": "tio-boot 压测",
+  "description": "对已部署的 tio-boot 靶机跑 ab / wrk 压测并采集原始数据。任务只负责「执行一次作业」，构建与部署在项目 tio-boot-web-benchmarker 里做；两者都可以用 Hook 触发。",
+  "workdir": "/srv/deploy/workspaces/tio-boot-web-benchmarker",
+  "shell": "auto",
+  "timeoutSec": 3600,
+  "concurrency": "queue",
+  "hookEnabled": true,
+  "archived": false,
+  "allowEnvOverride": true,
+  "envs": [
+    { "key": "TARGET_PORT", "value": "10061", "isSecret": false },
+    { "key": "APP_DIR", "value": "/srv/apps/tio-boot-web-benchmarker", "isSecret": false }
+  ],
+  "steps": [
+    { "name": "0. 诊断：接口与依赖", "file": "00-diagnose.sh", "sortOrder": 1, "enabled": true, "failStrategy": "continue", "timeoutSec": 600 }
+  ]
+}
