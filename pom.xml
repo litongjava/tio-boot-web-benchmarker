@@ -11,9 +11,6 @@
     <tio.boot.version>2.1.7</tio.boot.version>
     <lombok-version>1.18.30</lombok-version>
     <hotswap-classloader.version>1.2.9</hotswap-classloader.version>
-    <!-- jfinal-aop 必须用 nexus.io 这一支：tio-boot 2.x 启动时找的是
-         nexus.io.jfinal.aop.Aop，用 com.litongjava 那一支会打印
-         "AOP class not found"，注解扫描随之失效 —— 端口在听但所有路由 404。 -->
     <jfinal-aop.version>1.4.0</jfinal-aop.version>
     <final.name>web-hello</final.name>
     <main.class>com.litongjava.tio.web.hello.HelloApp</main.class>
